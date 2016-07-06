@@ -1,0 +1,18 @@
+ All the points refer to the documentation: https://docs.djangoproject.com/en/1.9/intro/
+ 
+ -python manage.py runserver: starts the development server on the internal IP-http://127.0.0.1:8000/
+  Can only connect to http://127.0.0.1:8000/
+  About internal IP: 127.x.x.x is loopback IP(localhost),for teasting 
+  Server's port change: python manage.py runserver 8080
+  Server's IP change:   python manage.py runserver 0.0.0.0:8000:
+    cannot connect to http://0.0.0.0:8000/ or http://120.9.1.1:8000/ etc
+    but,can connect to:http://127.0.0.1:8000/,http://127.9.1.1:8000/,http://127.255.1.1:8000/ or http://127.x.x.x:8000/
+  
+-map app's views.py to url,there are mutiple ways to do:
+  1. create app's urls.py as (Including another URLconf)
+    https://docs.djangoproject.com/en/1.9/intro/tutorial01/#write-your-first-view
+  2. import app's view just in project's URLconf(\mysite\urls.py):
+    add: from polls import views
+    add to urlpatterns: 
+      url(r'^polls',views.index,name='index'),#http://127.0.0.1:8000/polls/
+      url(r'^$',views.index,name='index'),#http://127.0.0.1:8000/
