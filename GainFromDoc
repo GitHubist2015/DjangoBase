@@ -16,3 +16,10 @@
     add to urlpatterns: 
       url(r'^polls',views.index,name='index'),#http://127.0.0.1:8000/polls/
       url(r'^$',views.index,name='index'),#http://127.0.0.1:8000/
+    Q? if there is another app has the views.py how to classify?
+      1.rename the views.py as app_views.py
+      change:from polls import pviews
+      change:url(r'^polls/',pviews.index,name='index')
+      2.specify the packge.module
+      change:import polls.views
+      change:url(r'^polls/',polls.views.index,name='index')
